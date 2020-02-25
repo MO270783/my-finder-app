@@ -1,0 +1,31 @@
+1. Install create-react-app global from npm: npm install -g create-react-app
+2. Create a project from command line using: "create-react-app <my-project-name>"
+3. Move inside the project and install dev dependencies, the following packages:
+npm -i -D eslint prettier babel-eslint eslint-plugin-react eslint-plugin-import eslint-plugin-prettier eslint-plugin-react-hooks eslint-plugin-jsx-a11y eslint-config-prettier eslint-config-airbnb eslint-plugin-html
+
+4. The above step will help you to use eslint and prettier in vscode.
+5. Copy .eslintrc.json and .prettierrc.json from why-hooks project
+6. That's all, you have successfully created a react project with eslint and prettier setup.
+7. The linkage between eslint and prettier is explained in website: https://glebbahmutov.com/blog/configure-prettier-in-vscode/#use-eslint-with-prettier
+
+8. So basically, eslint will be used to run it's operations along with prettier, i.e. when we save the file, it will solve both stylish and semantic problems.
+9. This is the reason we should disable any form JS formatting from editor and also disable js formatting from prettier in editor.
+Prettier will still be used for html etc.
+
+Hence, the below settings should be used in settings.json file:
+
+// These are all my auto-save configs
+"editor.formatOnSave": true,
+// turn it off for JS and JSX, we will do this via eslint
+"[javascript]": {
+  "editor.formatOnSave": false
+},
+"[javascriptreact]": {
+  "editor.formatOnSave": false
+},
+// tell the ESLint plugin to run on save
+"editor.codeActionsOnSave": {
+  "source.fixAll": true
+},
+// Optional BUT IMPORTANT: If you have the prettier extension enabled for other languages like CSS and HTML, turn it off for JS since we are doing it through Eslint already
+"prettier.disableLanguages": ["javascript", "javascriptreact"],

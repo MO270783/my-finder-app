@@ -1,0 +1,25 @@
+Below are the packages that you need to install from NPM to integrate eslint + prettier + react + vscode.
+
+eslint
+prettier
+babel-eslint
+eslint-plugin-react
+eslint-plugin-import
+eslint-plugin-prettier
+eslint-plugin-react-hooks
+eslint-plugin-jsx-a11y
+eslint-plugin-html
+
+eslint-config-prettier
+eslint-config-airbnb
+
+
+disable formatOnSave for javascript and javascriptreact from settings.json, because that will be done by eslint
+Enable source.fixall in settings.json. What this does is that it runs eslint fixall once you save the file.
+so that means, that all the formatting etc. will be done by eslint at this time. Hence we disable above.
+
+Solves doubts: https://glebbahmutov.com/blog/configure-prettier-in-vscode/#use-eslint-with-prettier
+
+
+
+npm -i -D eslint prettier babel-eslint eslint-plugin-react eslint-plugin-import eslint-plugin-prettier eslint-plugin-react-hooks eslint-plugin-jsx-a11y eslint-config-prettier eslint-config-airbnb eslint-plugin-html

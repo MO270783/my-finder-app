@@ -1,0 +1,71 @@
+JSX:
+JSX is nothing but javascript + XML to build HTML UI.
+Use curly braces to use javascript expression inside JSX. (more on this)
+That expression can be a constant, a variable, function declaration, function expression
+
+JSX ultimately creates an object with three keys:
+1. type
+2.. props
+	--> children --> array
+	--> prop1Key --> prop1Value
+	--> prop2Key --> prop2Value
+
+Points to remember:
+1. Just like we can pass attributes in HTML, you can pass attributes in JSX.
+like
+<Hello
+                userName={"Mohit"}
+                authed={true}
+                logout={function test() { console.log("Working fine1"); alert("Logged out"); return 2;}}
+                header={<h1>Nested element</h1>}
+		        obj={{ name: "Mohit" }}
+                clock={ <Clock date={new Date()}></Clock> }
+            >
+
+Now here, you can see the attribute value can be anything. function declartion, expression, object, a JSX element etc.
+Bottom line is you can pass anything as attributes here.
+
+These attributes can be accessed from component's props object, like this.props.userName, this.props.authed etc.
+
+2. You cannot use function/object as a react child. For example, the below is not legal. A react child can be a simple value such as string, int etc. or a
+react element itself.
+
+Hello {
+	render() {
+		return (
+			<h1>{this.props.logout)</h1>  //Not legal
+            <h1>{this.props.obj)</h1>  //Not legal
+		}
+	}
+}
+
+3. Be careful when handling button callbacks in React.
+<button onClick={this.props.post(param)}>Submit</button> //Error
+The above is incorrect since it will invoke the post method when button element is created. Instead we want to give  function variable
+that will be called when button is clicked. Something ike below
+
+<button onClick={() => this.props.post(param)}>Submit</button>
+
+
+4. My biggest confusion is around function declaration, invokation and expression.
+Invokation is fine: you use parenthesis.
+
+function test() {
+    console.log("Function1);
+}
+
+This seems like a declaration, but it also creates a function variable "test" holding function object
+
+let test = function() {
+    console.log("Function2);
+}
+This creates function expression.
+Use them carefully in JSX
+
+5. A JS expression is something that gives value. To check, pick that expression and assign it to variable.
+
+6. JSX is also an expression. Hence you can put them in {}. for example, something like:
+
+<div>
+   {<p>Hello</p}
+</div>
